@@ -64,7 +64,10 @@ export default class Claim extends Component {
 			reject_date: FormatDateTime(),
 			status: "Belum dibayar"
 			})
-			.then(res => alert("Reject success"))
+			.then(res => {
+				alert("Reject success");
+				window.location.reload();
+			})
 			.catch(err => {
 				console.log("Oke");
 			});
