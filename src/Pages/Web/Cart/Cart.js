@@ -93,7 +93,7 @@ export default class Cart extends Component {
             reject: false,
             reject_date: "",
             reject_by: "",
-            status: "Belum Bayar"
+            status: ""
         }
 
         axios.post(routeApi.CLAIM_CREATE, reqData)
