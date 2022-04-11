@@ -136,7 +136,7 @@ export default class Cart extends Component {
                                     <p>Ansuransi {typeAnsuran(item.type_ansuransi).ansuran}</p>
                                     <p className='text-form fw-bold'>No. Invoice: {invoice}</p>
                                 </td>
-                                <td>{item.priode}</td>
+                                <td>{item.priode} Tahun</td>
                                 <td >{item.gempa ? "yes":"no"}</td>
                                 <td>{FormatCurrency(item.harga_bangunan)}</td>
                             </tr>
