@@ -7,7 +7,8 @@ import {
     typeAnsuran, 
     FormatCurrency,
     getFloat,
-    GenerateInvoice
+    GenerateInvoice,
+    setSession
 } from '../../../Hooks/Hook';
 
 export default class Cart extends Component {
@@ -98,10 +99,10 @@ export default class Cart extends Component {
 
         axios.post(routeApi.CLAIM_CREATE, reqData)
             .then(res => {
-                console.log("Oke")
+                sessionStorage.setItem('isTx', true);
                 removeSession("cart");
                 setTimeout(() => {
-                    window.location.href="/transaksi";
+                    window.location.href="/transaksi?page=true";
                 }, 2000)
             })
             .catch(err => {

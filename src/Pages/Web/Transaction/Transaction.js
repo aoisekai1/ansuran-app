@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
-import { getSession } from '../../../Hooks/Hook'
+import { getParamUrl, getSession } from '../../../Hooks/Hook'
 
 export default class Transaction extends Component {
     componentDidMount(){
-        let cart = getSession('cart');
-        if(!cart || typeof cart == 'undefined'){
-            window.location.href = "/claim"
+        console.log(getParamUrl('page'))
+        if(getParamUrl('page') == null || getParamUrl('page') == "false"){
+            window.location.href = '/claim?type=1'
         }
     }
 
+    componentDidUpdate(){
+        
+    }
+
     render() {
-        let cart = getSession('cart');
-        if(!cart || typeof cart == 'undefined'){
-            return (
-                <div></div>
-            )
-        }
         return (
             <div className='container-fluid'>
                 <section id="hero" className="d-flex align-items-center">
