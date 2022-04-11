@@ -1,5 +1,5 @@
 // let API_URL = "http://192.168.136.59:3001/";
-let API_URL = "https://asuran-test.mamanabdurrahma.repl.co";
+let API_URL = "https://asuran-test.mamanabdurrahma.repl.co/";
 const routeApi = {
     CUSTOMER: API_URL+"customer/list/",
     CUSTOMER_CREATE: API_URL+"customer/register",
