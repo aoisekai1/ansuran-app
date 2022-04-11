@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import routeApi from '../../../General/Links'
-import {getSession, typeAnsuran, FormatDateTime} from '../../../Hooks/Hook'
+import {getSession, typeAnsuran, FormatDateTime, getParamUrl} from '../../../Hooks/Hook'
 
 
 export default class Claim extends Component {
@@ -16,8 +16,9 @@ export default class Claim extends Component {
 	}
 	
 	getDataClaim(){
+		let type = getParamUrl("type");
 		let userinfo = getSession("userinfo");
-		axios.get(routeApi.CLAIM_USER+userinfo._id+"?page=1&limit=100")
+		axios.get(routeApi.CLAIM_USER+userinfo._id+"?type="+type+"&page=1&limit=100")
 			.then((response) =>{
 				this.setState({data: response.data.data});
 			})

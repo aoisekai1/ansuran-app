@@ -11,11 +11,11 @@ export class Navbar extends Component {
         userinfo = userinfo ? userinfo:"";
         if(userinfo.isCustomer){
             return(<>
-                <li><Link className="nav-link scrollto" to="/claim">Kebakaran</Link></li>
-                <li><Link className="nav-link scrollto" to="/profile">Gempa Bumi</Link></li>
-                <li><Link className="nav-link scrollto" to="/profile">Kendaraan Bermotor</Link></li>
-                <li><Link className="nav-link scrollto" to="/profile">Kecelakaan Diri</Link></li>
-                <li><Link className="nav-link scrollto" to="/profile">Kesehatan</Link></li>
+                <li><a className="nav-link scrollto" href="/claim?type=1">Kebakaran</a></li>
+                <li><a className="nav-link scrollto" href="/claim?type=2">Gempa Bumi</a></li>
+                <li><a className="nav-link scrollto" href="/claim?type=3">Kendaraan Bermotor</a></li>
+                <li><a className="nav-link scrollto" href="/claim?type=4">Kecelakaan Diri</a></li>
+                <li><a className="nav-link scrollto" href="/claim?type=5">Kesehatan</a></li>
                 <li><Link className="getstarted scrollto" to="/claim/request">Pengajuan Klaim</Link></li>
                 <li><Link className="getstarted scrollto" to="/profile" style={{width:"40px",height:"40px",borderRadius:"50%"}}>
                         <i className="fa fa-user-circle" style={{fontSize:30, marginLeft:"-14px"}}></i>    

@@ -354,3 +354,11 @@ export function GenerateNoPolis(no_polis=""){
 
     return PREFIX+LAST_DIGIT+".0";
 }
+
+export function getParamUrl(param, url=""){
+    url = url ? url: window.location.href;
+    var newUrl = new URL(url);
+    var result = newUrl.searchParams.get(param);
+
+    return result;
+}
