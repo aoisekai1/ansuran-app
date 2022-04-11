@@ -1,0 +1,42 @@
+// let API_URL = "http://192.168.136.59:3001/";
+let API_URL = "https://asuran-test.mamanabdurrahma.repl.co";
+const routeApi = {
+    CUSTOMER: API_URL+"customer/list/",
+    CUSTOMER_CREATE: API_URL+"customer/register",
+    CUSTOMER_UPDATE: API_URL+"customer/update/",
+    CUSTOMER_DELETE: API_URL+"customer/delete/",
+    CUSTOMER_AUTH: API_URL+"customer/auth",
+    ADMIN: API_URL+"admin/list/",
+    ADMIN_CREATE: API_URL+"admin/register",
+    ADMIN_UPDATE: API_URL+"admin/update/",
+    ADMIN_DELETE: API_URL+"admin/delete/",
+    ADMIN_AUTH: API_URL+"admin/auth",
+    CLAIM: API_URL+"claim/list/",
+    CLAIM_USER: API_URL+"claim/list/user/",
+    CLAIM_CREATE: API_URL+"claim/save",
+    CLAIM_UPDATE: API_URL+"claim/update/",
+    CLAIM_DELETE: API_URL+"claim/delete/",
+    OKUPASI: API_URL+"okupasi/list/",
+    OKUPASI_CREATE: API_URL+"okupasi/save",
+    OKUPASI_UPDATE: API_URL+"okupasi/update/",
+    OKUPASI_DELETE: API_URL+"okupasi/delete/",
+    KONSTRUKSI: API_URL+"konstruksi/list/",
+    KONSTRUKSI_CREATE: API_URL+"konstruksi/save",
+    KONSTRUKSI_UPDATE: API_URL+"konstruksi/update/",
+    KONSTRUKSI_DELETE: API_URL+"konstruksi/delete/",
+    ROLE: API_URL+"role/list/",
+    ROLE_CREATE: API_URL+"role/save",
+    ROLE_UPDATE: API_URL+"role/update/",
+    ROLE_DELETE: API_URL+"role/delete/",
+    PRIVILLAGE: API_URL+"privillage/list/",
+    PRIVILLAGE_CREATE: API_URL+"privillage/save",
+    PRIVILLAGE_UPDATE: API_URL+"privillage/update/",
+    PRIVILLAGE_DELETE: API_URL+"privillage/delete/",
+    PRIVILLAGE_USER: API_URL+"privillage/user/list/",
+    PRIVILLAGE_USER_CREATE: API_URL+"privillage/user/save",
+    PRIVILLAGE_USER_UPDATE: API_URL+"privillage/user/update/",
+    PRIVILLAGE_USER_DELETE: API_URL+"privillage/user/delete/",
+
+}
+
+module.exports = routeApi;
