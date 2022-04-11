@@ -53,7 +53,7 @@ export default class Claim extends Component {
 	}
 
 	reject(id){
-		if(!window.confirm("Are you sure to publish polis number ?")){
+		if(!window.confirm("Are you sure to reject this ?")){
 			return;
 		}
 
