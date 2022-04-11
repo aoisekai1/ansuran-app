@@ -11,7 +11,7 @@ export class Navbar extends Component {
         userinfo = userinfo ? userinfo:"";
         if(userinfo.isCustomer){
             return(<>
-                <li><Link className="nav-link scrollto" to="/klaim">Kebakaran</Link></li>
+                <li><Link className="nav-link scrollto" to="/claim">Kebakaran</Link></li>
                 <li><Link className="nav-link scrollto" to="/profile">Gempa Bumi</Link></li>
                 <li><Link className="nav-link scrollto" to="/profile">Kendaraan Bermotor</Link></li>
                 <li><Link className="nav-link scrollto" to="/profile">Kecelakaan Diri</Link></li>
