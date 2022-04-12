@@ -32,7 +32,7 @@ export class Navbar extends Component {
                 </li>
             </>)
         }else{
-            let urlAdmin = window.location.href.replace("http://127.0.0.1:3000/","");
+            let urlAdmin = window.location.href.replace("https://ansuran.herokuapp.com/","");
             console.log(urlAdmin);
             if(urlAdmin !== "admin/login"){
                 return(<>
