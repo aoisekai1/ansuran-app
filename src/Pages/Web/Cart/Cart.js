@@ -142,7 +142,8 @@ export default class Cart extends Component {
                         return(
                             <tr key={index}>
                                 <td>
-                                    <p>Ansuransi {typeAnsuran(item.type_ansuransi).ansuran}</p>
+                                    <p style={{margin:0}}>Ansuransi {typeAnsuran(item.type_ansuransi).ansuran}</p>
+                                    <label className='text-muted'>{this.state.premi.ket}</label>
                                     <p className='text-form fw-bold'>No. Invoice: {invoice}</p>
                                 </td>
                                 <td>{item.priode} Tahun</td>
