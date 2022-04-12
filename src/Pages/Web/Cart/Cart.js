@@ -8,7 +8,8 @@ import {
     FormatCurrency,
     getFloat,
     GenerateInvoice,
-    setSession
+    setSession,
+    FormatDateTime
 } from '../../../Hooks/Hook';
 
 export default class Cart extends Component {
@@ -67,6 +68,11 @@ export default class Cart extends Component {
     payment(){
         document.getElementById("btn-payment").innerHTML="<i class='fa fa-spinner'></i>"
         document.getElementById("btn-payment").disabled = true;
+        let d = parseInt(FormatDateTime(new Date(), 'd'))+1;
+		let Y = FormatDateTime(new Date(), 'Y');
+		let m = FormatDateTime(new Date(), 'm');
+		let time = FormatDateTime(new Date(), 'H:i:s');
+		let dateTime = Y+"-"+m+"-"+d+" "+time;
         let cart = getSession("cart");
         let premi = getFloat(this.state.premi.premi);
         let basicPremi = parseInt(cart[0].harga_bangunan) * parseFloat(premi) / 1000 * parseInt(cart[0].priode); 
@@ -94,7 +100,9 @@ export default class Cart extends Component {
             reject: false,
             reject_date: "",
             reject_by: "",
-            status: ""
+            status: "",
+            expired: "",
+            expired_date: dateTime
         }
 
         axios.post(routeApi.CLAIM_CREATE, reqData)
