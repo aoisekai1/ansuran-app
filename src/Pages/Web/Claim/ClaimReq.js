@@ -69,6 +69,33 @@ export default class ClaimReq extends Component {
         
         window.location.href="/cart";
     }
+
+    disabled(){
+        const {
+            priode, okupasi, harga_bangunan,
+            konstruksi, alamat, provinsi,
+            kabupaten, daerah, gempa
+        } = this.state;
+
+        let data = {
+            priode: priode,
+            okupasi: okupasi,
+            harga_bangunan: harga_bangunan,
+            konstruksi:  konstruksi,
+            alamat: alamat,
+            provinsi: provinsi,
+            kabupaten: kabupaten,
+            daerah: daerah,
+        }
+        let status = false;
+        Object.keys(data).forEach(function(key){
+            if(data[key] == ""){
+                status = true
+            }
+        })
+
+        return status;
+    }
     
     render() {
         const {listOkupasi} = this.state; 
@@ -191,7 +218,7 @@ export default class ClaimReq extends Component {
                                                 </div>
                                             </div>
                                             <div className='col-md-12'>
-                                                <button type="button"  onClick={() => this.checkPremi()} className="btn btn-primary btn-block">Check Premi</button>
+                                                <button type="button"  onClick={() => this.checkPremi()} className="btn btn-primary btn-block" disabled={this.disabled()}>Check Premi</button>
                                             </div>
                                         </div>
                                     </form>
