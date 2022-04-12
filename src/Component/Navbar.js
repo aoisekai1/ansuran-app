@@ -33,6 +33,7 @@ export class Navbar extends Component {
             </>)
         }else{
             let urlAdmin = window.location.href.replace("http://127.0.0.1:3000/","");
+            console.log(urlAdmin);
             if(urlAdmin !== "admin/login"){
                 return(<>
                     <li><Link className="nav-link scrollto" to="/login">Login</Link></li>
