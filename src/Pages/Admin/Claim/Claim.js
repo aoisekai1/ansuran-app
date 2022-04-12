@@ -17,7 +17,8 @@ export default class Claim extends Component {
 			data:[],
 			item:{},
 			premi:{},
-			isShow: false
+			isShow: false,
+			userinfo:{}
 		}
 	}
 	componentDidMount(){
@@ -109,6 +110,7 @@ export default class Claim extends Component {
 	}
 	handleShow(obj){
 		this.findPremi(obj.okupasi);
+		this.findUser(obj.user_id);
 		this.setState({isShow: true,item:obj});
 	}
 	handleClose(){
@@ -124,8 +126,17 @@ export default class Claim extends Component {
                 console.log(err);
             });
     }
+	async findUser(user_id){
+		await axios.get(routeApi.CUSTOMER+user_id)
+            .then(res => {
+                this.setState({userinfo:res.data.data});
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+	}
 	render() {
-		const {item, premi} = this.state;
+		const {item, premi, userinfo} = this.state;
 		console.log(premi);
 		return (
 			<div className='container-fluid'>
@@ -165,6 +176,11 @@ export default class Claim extends Component {
 					<Modal.Body>
 						<table className='table'>
 							<tbody>
+								<tr>
+									<td>User Request</td>
+									<td>:</td>
+									<td>{item.user_id == userinfo._id ? userinfo.nama:""}</td>
+								</tr>
 								<tr>
 									<td>No Polis</td>
 									<td>:</td>

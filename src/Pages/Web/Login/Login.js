@@ -17,6 +17,7 @@ export default class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
+        
         axios.post(routeApi.CUSTOMER_AUTH, reqAuth)
             .then(response => {
                 if(response.data.data){
@@ -25,7 +26,7 @@ export default class Login extends Component {
                     userinfo.isCustomer = true;
                     userinfo.isAdmin = false;
                     setSession("userinfo", userinfo);
-                    window.location.href = '/claim';
+                    window.location.href = '/claim?type=1';
                 }else{
                     alert("Ops, username/password wrong");
                 }
