@@ -1,14 +1,23 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import { Modal, Button } from "react-bootstrap";
 import routeApi from '../../../General/Links'
-import {getSession, typeAnsuran, FormatDateTime, GenerateNoPolis} from '../../../Hooks/Hook'
-
+import {
+	getSession, 
+	typeAnsuran, 
+	FormatDateTime, 
+	FormatCurrency,
+	GenerateNoPolis
+} from '../../../Hooks/Hook'
 
 export default class Claim extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			data:[]
+			data:[],
+			item:{},
+			premi:{},
+			isShow: false
 		}
 	}
 	componentDidMount(){
@@ -91,15 +100,33 @@ export default class Claim extends Component {
 					<td>{item.status}</td>
 					<td>{FormatDateTime(item.tanggal_req)}</td>
 					<td>
-						<a href="">Lihat Rincian</a>
+						<a href="#" onClick={() => this.handleShow(item)}>Lihat Rincian</a>
 					</td>
 				</tr>
 			)
 			
 		})
 	}
-	
+	handleShow(obj){
+		this.findPremi(obj.okupasi);
+		this.setState({isShow: true,item:obj});
+	}
+	handleClose(){
+		this.setState({isShow: false});
+	}
+	async findPremi(code){
+        let cart = getSession("cart");
+        await axios.get(routeApi.OKUPASI+"premi/"+code)
+            .then(res => {
+                this.setState({premi:res.data.data});
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 	render() {
+		const {item, premi} = this.state;
+		console.log(premi);
 		return (
 			<div className='container-fluid'>
                 <section id="hero" className="d-flex align-items-center">
@@ -130,6 +157,68 @@ export default class Claim extends Component {
                     </div>
 
                 </section>
+
+				<Modal show={this.state.isShow} onHide={() => this.handleClose()}>
+					<Modal.Header>
+						<Modal.Title>Rincian Informasi</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<table className='table'>
+							<tbody>
+								<tr>
+									<td>No Polis</td>
+									<td>:</td>
+									<td>{item.no_polis}</td>
+								</tr>
+								<tr>
+									<td>No Invoice</td>
+									<td>:</td>
+									<td>{item.no_invoice}</td>
+								</tr>
+								<tr>
+									<td>Tanggal Request</td>
+									<td>:</td>
+									<td>{FormatDateTime(item.tanggal_req)}</td>
+								</tr>
+								<tr>
+									<td>Priode</td>
+									<td>:</td>
+									<td>{item.priode} Tahun</td>
+								</tr>
+								<tr>
+									<td>Konstruksi</td>
+									<td>:</td>
+									<td>Kelas {item.konstruksi}</td>
+								</tr>
+								<tr>
+									<td>Okupasi</td>
+									<td>:</td>
+									<td>{item.okupasi == parseInt(premi.code) ? premi.ket: ""}</td>
+								</tr>
+								<tr>
+									<td>Harga Bangunan</td>
+									<td>:</td>
+									<td>{FormatCurrency(item.harga_bangunan)}</td>
+								</tr>
+								<tr>
+									<td>Jenis Penanggungan</td>
+									<td>:</td>
+									<td>{typeAnsuran(item.jenis_ansuransi).ansuran}</td>
+								</tr>
+								<tr>
+									<td>Status</td>
+									<td>:</td>
+									<td>{item.status}</td>
+								</tr>
+							</tbody>
+						</table>
+					</Modal.Body>
+					<Modal.Footer>
+						<Button variant="secondary" onClick={() => this.handleClose()}>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
             </div>
 		)
 	}
